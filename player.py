@@ -13,16 +13,16 @@ class Player:
     def draw(self, screen):
         self.move()
         pg.draw.circle(screen, GREEN, (self.x, self.y), 4)
-        pg.draw.line(screen, GREEN, (self.x, self.y), (self.x + cos(self.pov) * DOV, self.y + sin(self.pov) * DOV))
+        # pg.draw.line(screen, GREEN, (self.x, self.y), (self.x + cos(self.pov) * DOV, self.y + sin(self.pov) * DOV))
 
     def move(self):
         keys = pg.key.get_pressed()
         sin_pov = sin(self.pov)
         cos_pov = cos(self.pov)
         if keys[pg.K_LEFT]:
-            self.pov -= 0.01
+            self.pov -= 0.02
         if keys[pg.K_RIGHT]:
-            self.pov += 0.01
+            self.pov += 0.02
         if keys[pg.K_w]:
             self.x += STEP * cos_pov
             self.y += STEP * sin_pov
