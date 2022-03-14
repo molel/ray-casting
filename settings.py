@@ -1,20 +1,24 @@
-from math import pi
+from math import pi, tan
 
 # Window settings
-RES = WIDTH, HEIGHT = 640, 640
+RES = WIDTH, HEIGHT = 800, 800
 CENTER_WIDTH, CENTER_HEIGHT = WIDTH // 2, HEIGHT // 2
 FPS = 60
 TILE_SIZE = 80
-FOV = 2 * pi / 3
+FOV = pi / 3
 POV = 0
-DOV = WIDTH
-NUM_OF_RAYS = 320
+NUM_OF_RAYS = 400
+DOV = NUM_OF_RAYS / (2 * tan(FOV / 2))
 RAY_STEP = FOV / NUM_OF_RAYS
+SCALE_X = WIDTH // NUM_OF_RAYS
+PROJ_COEFF = DOV * TILE_SIZE * 2
 
 # Colors
 BLACK = 0, 0, 0
 WHITE = 255, 255, 255
 GREEN = 100, 200, 100
+LIGHT_BLUE = 124, 165, 235
+GRAY = 44, 80, 80
 
 # Player settings
 POS = CENTER_WIDTH, CENTER_HEIGHT

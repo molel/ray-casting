@@ -2,10 +2,10 @@ from settings import TILE_SIZE
 
 world_map = ["WWWWWWWW",
              "W......W",
-             "W.W..W.W",
-             "W.W..W.W",
-             "W.W..W.W",
-             "W.W..W.W",
+             "W......W",
+             "W.W....W",
+             "W.W....W",
+             "W......W",
              "W......W",
              "WWWWWWWW"]
 
