@@ -10,3 +10,6 @@ WHITE = 255, 255, 255
 
 # Player settings
 POS = CENTER_WIDTH, CENTER_HEIGHT
+POV = 0
+DOV = WIDTH
+STEP = 5
