@@ -1,6 +1,12 @@
+# Window settings
 RES = WIDTH, HEIGHT = 640, 640
 CENTER_WIDTH, CENTER_HEIGHT = WIDTH // 2, HEIGHT // 2
 FPS = 60
 TILE_SIZE = 80
+
+# Colors
 BLACK = 0, 0, 0
 WHITE = 255, 255, 255
+
+# Player settings
+POS = CENTER_WIDTH, CENTER_HEIGHT
