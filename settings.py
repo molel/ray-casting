@@ -1,15 +1,21 @@
+from math import pi
+
 # Window settings
 RES = WIDTH, HEIGHT = 640, 640
 CENTER_WIDTH, CENTER_HEIGHT = WIDTH // 2, HEIGHT // 2
 FPS = 60
 TILE_SIZE = 80
+FOV = 2 * pi / 3
+POV = 0
+DOV = WIDTH
+NUM_OF_RAYS = 320
+RAY_STEP = FOV / NUM_OF_RAYS
 
 # Colors
 BLACK = 0, 0, 0
 WHITE = 255, 255, 255
+GREEN = 100, 200, 100
 
 # Player settings
 POS = CENTER_WIDTH, CENTER_HEIGHT
-POV = 0
-DOV = WIDTH
 STEP = 5
