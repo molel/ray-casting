@@ -17,6 +17,6 @@ class Minimap:
         for j, i in self.walls:
             pg.draw.rect(self.sc, BLACK, (j * MINIMAP_TILE_SIZE, i * MINIMAP_TILE_SIZE,
                                           MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE))
-        pg.draw.circle(self.sc, GREEN, (px * SCALE_MINIMAP, py * SCALE_MINIMAP), 2)
-        pg.draw.line(self.sc, GREEN, (px * SCALE_MINIMAP, py * SCALE_MINIMAP), ((px + 50 * cos(ppov)) * SCALE_MINIMAP,
-                                      (py + 50 * sin(ppov)) * SCALE_MINIMAP))
+        pg.draw.circle(self.sc, GREEN, (px * MINIMAP_SCALE, py * MINIMAP_SCALE), 2)
+        pg.draw.line(self.sc, GREEN, (px * MINIMAP_SCALE, py * MINIMAP_SCALE), ((px + 50 * cos(ppov)) * MINIMAP_SCALE,
+                                                                                (py + 50 * sin(ppov)) * MINIMAP_SCALE))
