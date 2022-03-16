@@ -10,11 +10,11 @@ class Player:
         self.x, self.y = POS
         self.pov = POV
 
-
     def move(self):
         keys = pg.key.get_pressed()
         sin_pov = sin(self.pov)
         cos_pov = cos(self.pov)
+        self.pov %= DOUBLE_PI
         if keys[pg.K_LEFT]:
             self.pov -= 0.035
         if keys[pg.K_RIGHT]:

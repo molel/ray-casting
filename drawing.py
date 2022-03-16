@@ -11,14 +11,17 @@ class Drawing:
         self.walls = walls
         self.img = pg.image.load("img/wall.png").convert()
         self.textures = {0: pg.image.load("img/wall.png").convert(),
-                         "sky": pg.transform.scale(pg.image.load("img/sky.png").convert(), (WIDTH, HALF_OF_HEIGHT))}
+                         "sky": pg.transform.scale(pg.image.load("img/sky.png").convert(), (WIDTH * 2, HALF_OF_HEIGHT))}
 
     @staticmethod
     def mapping(x, y):
         return (x // TILE_SIZE) * TILE_SIZE, (y // TILE_SIZE) * TILE_SIZE
 
-    def background(self):
-        self.screen.blit(self.textures["sky"], (0, 0))
+    def background(self, ppov):
+        offset = -2*ppov / DOUBLE_PI * WIDTH
+        self.screen.blit(self.textures["sky"], (-WIDTH*2 + offset, 0))
+        self.screen.blit(self.textures["sky"], (offset, 0))
+        self.screen.blit(self.textures["sky"], (WIDTH*2 + offset, 0))
         pg.draw.rect(self.screen, GRAY, (0, HALF_OF_HEIGHT, WIDTH, HALF_OF_HEIGHT))
 
     def raycast(self, ox, oy, opov):
@@ -52,7 +55,7 @@ class Drawing:
             depth, index = (dv, y % TILE_SIZE) if dv <= dh else (dh, x % TILE_SIZE)
             depth *= cos(opov - pov)
             depth = max(depth, 0.00001)
-            proj_height = min(SCALE_PROJECTION / depth, 3 * HEIGHT)
+            proj_height = min(SCALE_PROJECTION / depth, 4 * HEIGHT)
             c = 255 / (1 + depth * depth * 0.00002)
             color = (c, c, c)
             tempSurf = pg.Surface((SCALE_RAY, TEXTURE_HEIGHT))
