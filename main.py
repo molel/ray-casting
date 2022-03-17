@@ -7,6 +7,7 @@ from settings import *
 from world import walls, world_map
 
 pg.init()
+pg.mouse.set_visible(False)
 screen = pg.display.set_mode(RES)
 clock = pg.time.Clock()
 font = pg.font.SysFont("Arial", 20)

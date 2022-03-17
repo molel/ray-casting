@@ -12,11 +12,19 @@ class Player:
         self.x, self.y = POS
         self.pov = POV
 
+    def mouse_control(self):
+        if pg.mouse.get_focused():
+
+            difference = pg.mouse.get_pos()[0] - HALF_OF_WIDTH
+            pg.mouse.set_pos((HALF_OF_WIDTH, HALF_OF_HEIGHT))
+            self.pov += difference * 0.004
+
     def move(self):
         keys = pg.key.get_pressed()
         sin_pov = sin(self.pov)
         cos_pov = cos(self.pov)
         self.pov %= DOUBLE_PI
+        self.mouse_control()
         if keys[pg.K_LEFT]:
             self.pov -= 0.035
         if keys[pg.K_RIGHT]:

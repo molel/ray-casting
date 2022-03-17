@@ -3,7 +3,7 @@ from math import pi, tan
 # Window settings
 RES = WIDTH, HEIGHT = 800, 800
 HALF_OF_WIDTH, HALF_OF_HEIGHT = WIDTH // 2, HEIGHT // 2
-FPS = 60
+FPS = 30
 
 # Ray casting settings
 TILE_SIZE = 80
@@ -23,7 +23,7 @@ LIGHT_BLUE = 124, 165, 235
 GRAY = 44, 80, 80
 
 # Player settings
-POS = HALF_OF_WIDTH // 2, HALF_OF_HEIGHT // 2
+POS = HALF_OF_WIDTH // 2 - 50, HALF_OF_HEIGHT // 2 - 50
 STEP = 5
 
 # Texture settings
