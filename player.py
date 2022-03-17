@@ -2,7 +2,9 @@ from math import cos, sin
 
 import pygame as pg
 
+from drawing import mapping
 from settings import *
+from world import walls
 
 
 class Player:
@@ -20,14 +22,26 @@ class Player:
         if keys[pg.K_RIGHT]:
             self.pov += 0.035
         if keys[pg.K_w]:
-            self.x += STEP * cos_pov
-            self.y += STEP * sin_pov
+            dx = STEP * cos_pov
+            dy = STEP * sin_pov
+            if mapping(self.x + dx + 30 * cos_pov, self.y + dy + 30 * sin_pov) not in walls:
+                self.x += STEP * cos_pov
+                self.y += STEP * sin_pov
         if keys[pg.K_s]:
-            self.x -= STEP * cos_pov
-            self.y -= STEP * sin_pov
+            dx = STEP * cos_pov
+            dy = STEP * sin_pov
+            if mapping(self.x - dx - 30 * cos_pov, self.y - dy - 30 * sin_pov) not in walls:
+                self.x -= STEP * cos_pov
+                self.y -= STEP * sin_pov
         if keys[pg.K_a]:
-            self.x += STEP * sin_pov
-            self.y -= STEP * cos_pov
+            dx = STEP * sin_pov
+            dy = STEP * cos_pov
+            if mapping(self.x + dx + 30 * sin_pov, self.y - dy - 30 * cos_pov) not in walls:
+                self.x += STEP * sin_pov
+                self.y -= STEP * cos_pov
         if keys[pg.K_d]:
-            self.x -= STEP * sin_pov
-            self.y += STEP * cos_pov
+            dx = STEP * sin_pov
+            dy = STEP * cos_pov
+            if mapping(self.x - dx - 30 * sin_pov, self.y + dy + 30 * cos_pov) not in walls:
+                self.x -= STEP * sin_pov
+                self.y += STEP * cos_pov

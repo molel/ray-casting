@@ -23,7 +23,7 @@ LIGHT_BLUE = 124, 165, 235
 GRAY = 44, 80, 80
 
 # Player settings
-POS = HALF_OF_WIDTH, HALF_OF_HEIGHT
+POS = HALF_OF_WIDTH // 2, HALF_OF_HEIGHT // 2
 STEP = 5
 
 # Texture settings

@@ -5,6 +5,10 @@ import pygame as pg
 from settings import *
 
 
+def mapping(x, y):
+    return (x // TILE_SIZE) * TILE_SIZE, (y // TILE_SIZE) * TILE_SIZE
+
+
 class Drawing:
     def __init__(self, screen, walls):
         self.screen = screen
@@ -12,10 +16,6 @@ class Drawing:
         self.img = pg.image.load("img/wall.png").convert()
         self.textures = {0: pg.image.load("img/wall.png").convert(),
                          "sky": pg.transform.scale(pg.image.load("img/sky.png").convert(), (WIDTH * 2, HALF_OF_HEIGHT))}
-
-    @staticmethod
-    def mapping(x, y):
-        return (x // TILE_SIZE) * TILE_SIZE, (y // TILE_SIZE) * TILE_SIZE
 
     def background(self, ppov):
         offset = -2 * ppov / DOUBLE_PI * WIDTH
@@ -26,7 +26,7 @@ class Drawing:
 
     def raycast(self, ox, oy, opov):
         pov = opov - FOV / 2
-        mx, my = self.mapping(ox, oy)
+        mx, my = mapping(ox, oy)
         for ray in range(NUMBER_OF_RAYS):
 
             psin = sin(pov)
@@ -40,7 +40,7 @@ class Drawing:
             for i in range(0, WIDTH, TILE_SIZE):
                 dv = (vx - ox) / pcos
                 y = oy + dv * psin
-                if self.mapping(vx + dx, y) in self.walls:
+                if mapping(vx + dx, y) in self.walls:
                     break
                 vx += dx * TILE_SIZE
 
@@ -49,14 +49,14 @@ class Drawing:
             for i in range(0, WIDTH, TILE_SIZE):
                 dh = (hy - oy) / psin
                 x = ox + dh * pcos
-                if self.mapping(x, hy + dy) in self.walls:
+                if mapping(x, hy + dy) in self.walls:
                     break
                 hy += dy * TILE_SIZE
 
-            depth, offset = (dv, y //1 % TILE_SIZE) if dv <= dh else (dh, x//1 % TILE_SIZE)
+            depth, offset = (dv, y // 1 % TILE_SIZE) if dv <= dh else (dh, x // 1 % TILE_SIZE)
             depth *= cos(opov - pov)
             depth = max(depth, 0.00001)
-            projection_height = min(PROJECTION_SCALE / depth, 4 * HEIGHT)
+            projection_height = min(PROJECTION_SCALE / depth, 3 * HEIGHT)
 
             wall = self.textures[0].subsurface((offset * TEXTURE_SCALE, 0, TEXTURE_SCALE, TEXTURE_HEIGHT))
             wall = pg.transform.scale(wall, (RAY_WIDTH + 1, projection_height))
