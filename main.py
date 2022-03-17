@@ -13,7 +13,7 @@ font = pg.font.SysFont("Arial", 20)
 
 player = Player()
 drawing = Drawing(screen, walls)
-minimap = Minimap(screen, walls, len(world_map), len(world_map[0]))
+minimap = Minimap(screen, walls, len(world_map[0]), len(world_map))
 
 
 def get_fps():
